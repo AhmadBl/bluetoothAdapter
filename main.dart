@@ -235,38 +235,10 @@ class _MyAppState extends State<MyApp> {
     return deviceList;
   }
 
-  Widget getScreenshot() {
-    if (_recievedMessage != null &&
-        _recievedMessage != "" &&
-        _recievedMessage.length > 500) {
-      return Image.memory(base64Decode(_recievedMessage));
-    } else {
-      return Image.network('https://picsum.photos/250?image=9');
-    }
-  }
-
-  Image imageFromBase64String(String base64String) {
-    return Image.memory(base64Decode(base64String));
-  }
-
-  Uint8List dataFromBase64String(String base64String) {
-    return base64Decode(base64String);
-  }
-
-  String base64String(Uint8List data) {
-    return base64Encode(data);
-  }
-
   Future<void> writeToFile(ByteData data, String path) {
     final buffer = data.buffer;
     return new File(path).writeAsBytes(
         buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
-  }
-
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-
-    return directory.path;
   }
 
   Future<Directory> downloadsDirectory =
