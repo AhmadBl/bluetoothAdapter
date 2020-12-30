@@ -83,7 +83,6 @@ class _MyAppState extends State<MyApp> {
     }
 
     Directory appDocumentsDirectory = await getApplicationDocumentsDirectory(); 
-    String appDocumentsPath = appDocumentsDirectory.path; 
     var downloadsDirectory = await DownloadsPathProvider.downloadsDirectory;
     String filePath = downloadsDirectory.path + '/picture.jpg'; 
     File file = File(filePath);
@@ -116,21 +115,6 @@ class _MyAppState extends State<MyApp> {
                         await flutterbluetoothadapter.startServer();
                       },
                       child: Text('LISTEN'),
-                    ),
-                  ),
-                ),
-                Flexible(
-                  fit: FlexFit.tight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: () {
-                        contentLength = 0;
-                        chunks.clear();
-                        print("Erase done.........");
-                        _timer.cancel();
-                      },
-                      child: Text('Erase'),
                     ),
                   ),
                 ),
